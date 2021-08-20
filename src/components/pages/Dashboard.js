@@ -3,8 +3,7 @@ import * as BooksAPI from '../../BooksAPI'
 import { Link } from 'react-router-dom'
 import Shelf from '../Shelf'
 
-
-export default class Dashboard extends Component {
+export default class  Dashboard extends Component { 
     constructor(props) {
         super(props);
         this.state = {
@@ -15,8 +14,7 @@ export default class Dashboard extends Component {
     componentDidMount() {
         BooksAPI.getAll()
             .then(resp => {
-                console.log(resp);
-                this.setState({books: resp})
+                this.setState({ books: resp });
             });   
     }
     
@@ -25,10 +23,10 @@ export default class Dashboard extends Component {
             .then(resp => {
                 book.shelf = shelf;
                 this.setState(state => ({
-                    books: state.books.filter(b => b.id !== book.id).concat({ book })
+                    books: state.books.filter(b => b.id !== book.id).concat({...book, shelf} )
                 }));
             });
-    }
+     }
     
     render() {
         return (
@@ -45,14 +43,13 @@ export default class Dashboard extends Component {
                     
             
         
-            </div>
-                    
-             
+             </div>
+            </div> 
             <div className="open-search">
               <Link to="/search"><button>Add a book</button></Link>
             </div>
             </div>
-            </div>
+        
        
         )
     }

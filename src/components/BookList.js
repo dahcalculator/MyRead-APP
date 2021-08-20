@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 export default class BookList extends Component {
-  
+ 
     render() {
       
         return (
@@ -17,7 +17,7 @@ export default class BookList extends Component {
                   `url(${this.props.book.imageLinks && this.props.book.imageLinks.thumbnail || ""})`
                 }}></div>
               <div className="book-shelf-changer">
-                  <select value={this.props.book.shelf || ""} onChange={(e) => {this.props.updateBook(this.props.book, e.target.value)
+                  <select value={this.props.book.shelf || "none"} onChange={(e) => {this.props.updateBook(this.props.book, e.target.value)
                     }}
                   >
                   <option value="move" disabled>Move to...</option>
